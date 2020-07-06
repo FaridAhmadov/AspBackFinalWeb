@@ -1,0 +1,68 @@
+﻿@using ASPFINALPROJECT.VWmodels
+
+@foreach (var item in ViewBag.ConBack)
+{
+<div class="banner-area-wrapper" style="background-image: url('/Public/img/@item.Image')">
+
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>@item.PageTitle</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+
+
+
+
+
+
+<div class="contact-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="contact-contents text-center">
+                    <div class="single-contact mb-65">
+                        <div class="contact-icon">
+                            <img src="~/Public/img/contact/contact1.png" alt="contact">
+                        </div>
+                        <div class="contact-add">
+                            <h3>Location</h3>
+                            <p>@ViewBag.contact.Location</p>
+                        </div>
+                    </div>
+                    <div class="single-contact mb-65">
+                        <div class="contact-icon">
+                            <img src="~/Public/img/contact/contact2.png" alt="contact">
+                        </div>
+                        <div class="contact-add">
+                            <h3>Address</h3>
+                            <p>@ViewBag.contact.Address</p>
+                        </div>
+                    </div>
+                    <div class="single-contact">
+                        <div class="contact-icon">
+                            <img src="~/Public/img/contact/contact3.png" alt="contact">
+                        </div>
+                        <div class="contact-add">
+                            <h3>Website</h3>
+                            <p>@ViewBag.contact.Website</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @{ Html.RenderPartial("~/Views/Shared/MessagesPartial.cshtml", new MessageVM { PageName = "Contact" }); }
+
+        </div>
+    </div>
+</div>
+
+

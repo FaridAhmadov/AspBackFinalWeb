@@ -1,0 +1,57 @@
+﻿@model ASPFINALPROJECT.Models.LatestFromBlog
+
+@{
+    ViewBag.Title = "UserBlogUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center;font-size:20px">CREATE BLOG POST</h2>
+
+
+@using ASPFINALPROJECT.Models;
+@{
+    int pubID = Convert.ToInt32(Session["LoggedIdd"]);
+
+}
+
+<div class="qwerty">
+    <form class="user" id="qw" method="post" enctype="multipart/form-data">
+
+        <div class="col-sm-3 mb-3 mb-sm-0"></div>
+
+        <div class="form-row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+
+                @Html.LabelFor(l => l.Title)
+                @Html.TextBoxFor(l => l.Title, null, new { @class = "form-control form-control-user", name = "Title" })
+                @Html.ValidationMessageFor(l => l.Title, null, new { @class = "text-danger" })
+
+                @Html.LabelFor(l => l.ContentText)
+                @Html.TextAreaFor(l => l.ContentText, new { @class = "form-control", @id = "cktext" })
+                @Html.ValidationMessageFor(l => l.ContentText, null, new { @class = "text-danger" })
+
+                @Html.LabelFor(l => l.Image)
+                @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control form-control-user", @type = "file", name = "Image" })
+                @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 mb-3 mb-sm-0 col-md-offset-3">
+            <button class="btn btn-primary btn-user btn-block" style="margin-top: 20px;background-color:#2ec31d;border:unset">Update</button>
+        </div>
+
+        <input type="hidden" name="Image" value="@Model.Image" />
+        <input type="hidden" name="PublisherID" value="@pubID" />
+        <input type="hidden" name="ManageStatus" value="@Model.ManageStatus" />
+        <input type="hidden" name="usersID" value="@Model.usersID" />
+
+
+
+    </form>
+</div>
+
+@section CKeditor{
+    <script src="~/Areas/Admin/Public/ckeditor/ckeditor.js"></script>
+}
+<div class="col-sm-3 mb-3 mb-sm-0"></div>

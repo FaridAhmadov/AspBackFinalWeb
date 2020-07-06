@@ -1,0 +1,48 @@
+﻿@model ASPFINALPROJECT.Models.LatestFromBlog
+
+@{
+    ViewBag.Title = "BlogUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Blog - Update</h2>
+
+
+<form class="user" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <img src="~/Public/img/@Model.Image" width="100" />
+            @Html.LabelFor(l => l.Image)
+            @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control form-control-user", @type = "file", name = "Image" })
+            @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Title)
+            @Html.TextBoxFor(l => l.Title, null, new { @class = "form-control form-control-user", name = "Title" })
+            @Html.ValidationMessageFor(l => l.Title, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.ContentText)
+            @Html.TextAreaFor(l => l.ContentText, new { @class = "form-contro", @id = "CKEdit" })
+            @Html.ValidationMessageFor(l => l.ContentText, null, new { @class = "text-danger" })
+        </div>
+
+        <input type="hidden" name="Image" value="@Model.Image" />
+        <input type="hidden" name="ManageStatus" value="@Model.ManageStatus" />
+        <input type="hidden" name="usersID" value="@Model.usersID" />
+
+
+    </div>
+
+    <button class="btn btn-primary btn-user btn-block">Create</button>
+    <hr>
+    @section CKeditor{
+        <script src="~/Areas/Admin/Public/ckeditor/ckeditor.js"></script>
+    }
+
+
+</form>
+
+

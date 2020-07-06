@@ -1,0 +1,90 @@
+﻿
+@model ASPFINALPROJECT.Models.LatestFromBlog
+@using ASPFINALPROJECT.VWmodels
+
+
+
+@foreach (var item in ViewBag.Blog)
+{
+<div class="banner-area-wrapper" style="background-image: url('/Public/img/@item.Image')">
+
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>@item.PageTitle</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+<!-- Blog Start -->
+<div class="blog-details-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-details">
+                    <div class="blog-details-img">
+                        <img src="~/Public/img/@Model.Image" alt="blog-details">
+                    </div>
+                    <div class="blog-details-content">
+
+                        <h2>@Model.Title </h2>
+
+                        <h6>By @ViewBag.aa.Fullname   /  @Model.CreatedDate.ToString("mmmm dd, yyyy")  /  <i class="fa fa-comments-o"></i> 4</h6>
+
+
+                        <p>@Html.Raw(Model.ContentText)</p>
+                    </div>
+
+
+                    @{ Html.RenderPartial("~/Views/Shared/MessagesPartial.cshtml", new MessageVM { PageName = "Blog", PostID = Model.Id }); }
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    @{ Html.RenderPartial("~/Views/Shared/SidebarPartial.cshtml");}
+              
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (var item in ViewBag.LSB)
+                        {
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="@Url.Action("Details","Blog", new { Id = @item.Id })">
+                                        <img src="~/Public/img/@item.Image" alt="post" style="width:100px">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="@Url.Action("Details","Blog", new { Id = @item.Id })">@item.Title</a></h4>
+                                    <p>By @item.users.Fullname  /  @item.CreatedDate.ToString("mmmm dd, 2020")</p>
+                                </div>
+                            </div>}
+
+                        <div class="single-blog-widget">
+                            <h3>tags</h3>
+                            <div class="single-tag">
+                                <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                                <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                                <a href="blog-details.html" class="mb-10">teachers</a>
+                                <a href="blog-details.html" class="mr-10">learning</a>
+                                <a href="blog-details.html" class="mr-10">university</a>
+                                <a href="blog-details.html">events</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+          
+        </div>
+    </div>
+</div>
+<!-- Blog End -->

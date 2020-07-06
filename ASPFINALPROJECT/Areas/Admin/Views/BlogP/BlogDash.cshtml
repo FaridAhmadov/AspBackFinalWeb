@@ -1,0 +1,68 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+@{
+    ViewBag.Title = "BlogDash";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Blog - Dash</h2>
+
+
+
+<a href="@Url.Action("BlogCreate","BlogP")" class="btn btn-info">Create Content</a>
+<br />
+<br />
+<table class="table mt-3">
+    <thead class="thead-dark" style="font-size:13px">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="width:100px">Title</th>
+            <th scope="col" style="width:350px">Content</th>
+            <th scope="col">Date</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Status</th>
+            <th scope="col">Comment Count</th>
+            <th scope="col">Image</th>
+            <th scope="col">Settings</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{int i = 0; }
+        @foreach (var item in Model.latestFromBlogs)
+        {
+
+            i++;
+            <tr style="font-size:13px">
+                <th scope="row">@i</th>
+                <td>@item.Title</td>
+                <td>@(item.ContentText.Length>300? Html.Raw(item.ContentText.Substring(0,300)+ "...") : Html.Raw(item.ContentText))</td>
+                <td>@item.CreatedDate</td>
+                <td>
+                 @item.users.Fullname
+                </td>
+                <td>@item.ManageStatus</td>
+                <td>@item.CommentCount</td>
+
+                <td>
+                    <img src="~/Public/img/@item.Image" style="width:140px" />
+                </td>
+                <td>
+
+                    <a href="@Url.Action("BlogUpdate","BlogP", new {id=item.Id })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <a href="@Url.Action("BlogDelete","BlogP", new {id=item.Id })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+

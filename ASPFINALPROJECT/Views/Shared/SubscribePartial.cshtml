@@ -1,0 +1,30 @@
+﻿@model ASPFINALPROJECT.Models.Subscribers
+
+<div class="subscribe-area pt-60 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="subscribe-content section-title text-center">
+                    <h2>subscribe our newsletter</h2>
+                    <p>I must explain to you how all this mistaken idea </p>
+                </div>
+                <div class="newsletter-form mc_embed_signup">
+                    <form method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll" class="mc-form">
+                            <div class="col-md-12 email" id="mce-EMAIL">
+                                @Html.LabelFor(l => l.Email)
+                                @Html.TextBoxFor(l => l.Email, null, new { @class = "form-control", name = "ContentText", @placeholder = "Name..." })
+                                @Html.ValidationMessageFor(l => l.Email, null, new { @class = "text-danger" })
+                            </div>
+
+                            <button class="btn btn-primary btn-user btn-block" id="mc-embedded-subscribe" type="submit">Submit</button>
+
+                            <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span></button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

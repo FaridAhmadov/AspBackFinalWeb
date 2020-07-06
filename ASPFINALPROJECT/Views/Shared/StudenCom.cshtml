@@ -1,0 +1,19 @@
+﻿@model List<ASPFINALPROJECT.Models.StudentSingleComment>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-8 col-md-offset-2 col-sm-12">
+        <div class="single-testimonial">
+            <div class="testimonial-info">
+                <div class="testimonial-img">
+                    <img src="~/Public/img/@item.Image" alt="testimonial">
+                </div>
+                <div class="testimonial-content">
+                    <p>@item.ContentText</p>
+                    <h4>@item.FullName</h4>
+                    <h5>@item.Status</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+}

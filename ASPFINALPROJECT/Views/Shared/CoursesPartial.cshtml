@@ -1,0 +1,30 @@
+﻿@model  List<ASPFINALPROJECT.Models.Courses>
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+<div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="single-course mb-70">
+        <div class="course-img">
+            <a href="@Url.Action("Details","Courses", new { id = @item.Id })">
+                <img src="~/Public/img/@item.Image" alt="course">
+                <div class="course-hover">
+                    <i class="fa fa-link"></i>
+                </div>
+            </a>
+        </div>
+        <div class="course-content">
+            <h3><a href="@Url.Action("Details","Courses", new { id = @item.Id })">@item.Title</a></h3>
+            <p>@(item.Content.Length>140? Html.Raw(item.Content.Substring(0,140)+ "...") : Html.Raw(item.Content))</p>
+            <a class="default-btn" href="course-details.html">read more</a>
+        </div>
+       
+
+
+        <input type="hidden" name="Id" value="@item.Id" />
+
+    </div>
+</div>
+    }
+</div>

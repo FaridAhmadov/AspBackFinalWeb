@@ -1,0 +1,50 @@
+﻿@model ASPFINALPROJECT.Models.StudentSingleComment
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Single Student Comment - Update</h2>
+
+
+
+<form class="user" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <img src="~/Public/img/@Model.Image" height="100" />
+            @Html.LabelFor(l => l.Image)
+            @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control form-control-user", @type = "file", name = "Fullname", @placeholder = "Title..." })
+            @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.FullName)
+            @Html.TextBoxFor(l => l.FullName, null, new { @class = "form-control form-control-user", name = "Title", @placeholder = "Title..." })
+            @Html.ValidationMessageFor(l => l.FullName, null, new { @class = "text-danger" })
+        </div>
+
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.ContentText)
+            @Html.TextBoxFor(l => l.ContentText, null, new { @class = "form-control form-control-user", name = "ContentText", @placeholder = "ContentText..." })
+            @Html.ValidationMessageFor(l => l.ContentText, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Status)
+            @Html.TextBoxFor(l => l.Status, null, new { @class = "form-control form-control-user", name = "Status", @placeholder = "Status..." })
+            @Html.ValidationMessageFor(l => l.Status, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <input type="hidden" name="Image" value="@Model.Image" />
+
+
+    <button class="btn btn-primary btn-user btn-block">Submit</button>
+    <hr>
+
+
+</form>
+
+

@@ -1,0 +1,35 @@
+﻿@model ASPFINALPROJECT.Models.Video
+
+@{
+    ViewBag.Title = "VideoCreate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VideoCreate</h2>
+
+
+<form class="user" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Image)
+            @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control form-control-user", @type = "file", name = "Fullname", @placeholder = "Title..." })
+            @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+        </div>
+
+  
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.VideoUrl)
+            @Html.TextBoxFor(l => l.VideoUrl, null, new { @class = "form-control form-control-user", name = "Subtitle", @placeholder = "Subtitle..." })
+            @Html.ValidationMessageFor(l => l.VideoUrl, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <button class="btn btn-primary btn-user btn-block">Submit</button>
+    <hr>
+
+
+</form>
+
+

@@ -1,0 +1,36 @@
+﻿@model ASPFINALPROJECT.Models.Publishers
+
+@{
+    ViewBag.Title = "ResetPass";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ResetPass</h2>
+
+
+
+<form class="user" method="post" enctype="multipart/form-data" style="width:500px">
+    <div class="form-group row">
+        <div class="col-sm-12 mb-3 mb-sm-0" style="margin-top:10px">
+            <label>Old Paswword</label>
+            <input class="form-control" type="text" name="Oldpassword" id="Oldpassword" />
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0" style="margin-top:10px">
+            @Html.LabelFor(l => l.Password)
+            @Html.TextBoxFor(l => l.Password, null, new { @class = "form-control", name = "Title" })
+            @Html.ValidationMessageFor(l => l.Password, null, new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <input type="hidden" name="Image" value="@Model.Image" />
+    <input type="hidden" name="Username" value="@Model.Username" />
+    <input type="hidden" name="Fullname" value="@Model.Fullname" />
+    <input type="hidden" name="Email" value="@Model.Email" />
+
+    <button class="btn btn-primary btn-user btn-block">Save Changes</button>
+    <hr>
+
+</form>
+
+

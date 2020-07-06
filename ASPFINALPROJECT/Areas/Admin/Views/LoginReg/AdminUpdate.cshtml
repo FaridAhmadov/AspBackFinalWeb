@@ -1,0 +1,51 @@
+﻿@model ASPFINALPROJECT.Models.Publishers
+
+@{
+    ViewBag.Title = "AdminUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin - Update</h2>
+
+
+
+<form class="user" method="post" enctype="multipart/form-data" style="width:500px">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <img src="~/Public/img/@Model.Image" width="100" />
+            @Html.LabelFor(l => l.Image)
+            @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control", @type = "file", name = "Image" })
+            @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0" style="margin-top:10px">
+            @Html.LabelFor(l => l.Fullname)
+            @Html.TextBoxFor(l => l.Fullname, null, new { @class = "form-control", name = "Title" })
+            @Html.ValidationMessageFor(l => l.Fullname, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 mb-3 mb-sm-0" style="margin-top:10px">
+            @Html.LabelFor(l => l.Email)
+            @Html.TextBoxFor(l => l.Email, null, new { @class = "form-control", name = "Title" })
+            @Html.ValidationMessageFor(l => l.Email, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 mb-3 mb-sm-0" style="margin-top:10px">
+            @Html.LabelFor(l => l.Username)
+            @Html.TextBoxFor(l => l.Username, null, new { @class = "form-control", name = "Title" })
+            @Html.ValidationMessageFor(l => l.Username, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <a href="@Url.Action("ResetPass","LoginReg")">Forgot your password?</a>
+    <br />
+    <br />
+    <input type="hidden" name="Password" value="@Model.Password" />
+
+    <input type="hidden" name="Image" value="@Model.Image" />
+
+    <button class="btn btn-primary  btn-block">Save Changes</button>
+    <hr>
+
+</form>
+
+

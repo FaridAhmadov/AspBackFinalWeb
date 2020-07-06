@@ -1,0 +1,48 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+@{
+    ViewBag.Title = "Dash";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Contact - Dash</h2>
+
+
+
+<br />
+<br />
+<table class="table mt-3">
+    <thead class="thead-dark" style="font-size:13px">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Location</th>
+            <th scope="col">Address</th>
+            <th scope="col">Website</th>         
+            <th scope="col">Settings</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 0; }
+        @foreach (var item in Model.contacts)
+        {
+            i++;
+            <tr style="font-size:13px">
+                <th scope="row">@i</th>
+                <td>@item.Location</td>
+                <td>@item.Address</td>
+                <td>@item.Website</td>
+              
+                <td>
+
+                    <a href="@Url.Action("Update","ContactP", new {id=item.Id })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+

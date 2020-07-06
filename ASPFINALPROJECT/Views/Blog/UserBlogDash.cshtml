@@ -1,0 +1,72 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+@{
+    ViewBag.Title = "UserBlogDash";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserBlogDash</h2>
+
+@using ASPFINALPROJECT.Models;
+@{
+    int userIDD = Convert.ToInt32(Session["LoggedIdd"]);
+
+}
+
+<a href="@Url.Action("UserBlogCreate","Blog")" class="btn btn-info">Create Content</a>
+<br />
+<br />
+<table class="table mt-3">
+    <thead class="thead-dark" style="font-size:13px">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="width:100px">Title</th>
+            <th scope="col" style="width:350px">Content</th>
+            <th scope="col">Date</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Status</th>
+            <th scope="col">Comment Count</th>
+            <th scope="col">Image</th>
+            <th scope="col">Settings</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @{int i = 0; }
+        @foreach (var item in Model.latestFromBlogs.Where(a=>a.ManageStatus=="User" && a.usersID==userIDD))
+        {
+
+            i++;
+            <tr style="font-size:13px">
+                <th scope="row">@i</th>
+                <td>@item.Title</td>
+                <td>@(item.ContentText.Length>300? Html.Raw(item.ContentText.Substring(0,300)+ "...") : Html.Raw(item.ContentText))</td>
+                <td>@item.CreatedDate</td>
+                <td>
+                    @item.users.Fullname
+                </td>
+                <td>@item.ManageStatus</td>
+                <td>@item.CommentCount</td>
+
+                <td>
+                    <img src="~/Public/img/@item.Image" style="width:140px" />
+                </td>
+                <td>
+
+                    <a href="@Url.Action("UserBlogUpdate","Blog", new {id=item.Id })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <a href="@Url.Action("UserBlogDelete","Blog", new {id=item.Id })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+

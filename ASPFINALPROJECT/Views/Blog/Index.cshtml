@@ -1,0 +1,99 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+
+<!-- Banner Area Start -->
+@foreach (var item in ViewBag.Blog)
+{
+    <div class="banner-area-wrapper" style="background-image: url('Public/img/@item.Image')">
+
+        <div class="banner-area text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="banner-content-wrapper">
+                            <div class="banner-content">
+                                <h2>@item.PageTitle</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>}
+<!-- Banner Area End -->
+<!-- Blog Start -->
+<div class="blog-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="blog-sidebar left">
+
+                    @{ Html.RenderPartial("~/Views/Shared/SidebarPartial.cshtml");}
+
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (var item in Model.latestFromBlogs.Take(3))
+                        {
+                    <div class="single-post mb-30">
+                        <div class="single-post-img">
+                            <a href="@Url.Action("Details","Blog", new { Id = @item.Id })">
+                                <img src="~/Public/img/@item.Image" alt="post" style="width:100px">
+                                <div class="blog-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="single-post-content">
+                            <h4><a href="@Url.Action("Details","Blog", new { Id = @item.Id })">@item.Title</a></h4>
+                            <p>By @item.users.Fullname  /  @item.CreatedDate.ToString("mmmm dd, 2020")</p>
+                        </div>
+                    </div>}
+
+
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                            <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                            <a href="blog-details.html" class="mb-10">teachers</a>
+                            <a href="blog-details.html" class="mr-10">learning</a>
+                            <a href="blog-details.html" class="mr-10">university</a>
+                            <a href="blog-details.html">events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+
+
+
+                    @*BLOG HERE*@
+                    @{ Html.RenderPartial("~/Views/Shared/BlogPartial.cshtml", Model.latestFromBlogs);}
+
+
+                    <div class="col-md-12">
+                        <div class="pagination">
+                            <ul>
+                                @for (int i = 1; i <= Model.pageCount; i++)
+                                {
+                                    if (i == Model.CurrentPage)
+                                    {
+                                        <li><a href="#" style="background-color:darkslateblue;color:white">1</a></li>
+                                    }
+                                    else
+                                    {
+                                    <li><a href="@Url.Action("Index","Blog", new { page=i}) ">@i</a></li>
+                                    }
+                                }
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->

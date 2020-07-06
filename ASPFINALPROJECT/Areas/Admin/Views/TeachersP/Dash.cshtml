@@ -1,0 +1,81 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+@{
+    ViewBag.Title = "Dash";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Teachers - Dash</h2>
+
+
+<a href="@Url.Action("Create","TeachersP")" class="btn btn-info">Create Content</a>
+<br />
+<br />
+<table class="table mt-3 table-responsive"  >
+    <thead class="thead-dark" style="font-size:13px">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">About</th>
+            <th scope="col">Status</th>
+            <th scope="col">Degree</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Hobbies</th>
+            <th scope="col">Faculty</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Number</th>
+            <th scope="col">Skype</th>
+            <th scope="col">Language</th>
+            <th scope="col">Team Leader</th>
+            <th scope="col">Design</th>
+            <th scope="col">Innovation</th>
+            <th scope="col">Development</th>
+            <th scope="col">Communication</th>
+            <th scope="col">Image</th>
+            <th scope="col">Settings</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 0; }
+        @foreach (var item in Model.meetOurTeachers)
+        {
+            i++;
+
+        <tr style="font-size:13px">
+            <th scope="row">@i</th>
+            <td>@item.Title</td>
+            <td>@(item.Content.Length>100? Html.Raw(item.Content.Substring(0, 100)) : Html.Raw(item.Content))</td>
+            <td>@item.Status</td>
+            <td>@item.Degree</td>
+            <td>@item.Experience</td>
+            <td>@item.Hobbies</td>
+            <td>@item.Faculty</td>
+            <td>@item.Mail</td>
+            <td>@item.Number</td>
+            <td>@item.Skype</td>
+            <td>@item.Language</td>
+            <td>@item.TeamLeader</td>
+            <td>@item.Design</td>
+            <td>@item.Innovation</td>
+            <td>@item.Development</td>
+            <td>@item.Communication</td>
+            <td>
+                <img src="~/Public/img/@item.Image" style="width:100px" />
+            </td>
+            <td>
+
+                <a href="@Url.Action("Update","TeachersP", new {id=item.Id })">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <a href="@Url.Action("Delete","TeachersP", new {id=item.Id })">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+
+        </tr>
+
+
+        }
+    </tbody>
+</table>

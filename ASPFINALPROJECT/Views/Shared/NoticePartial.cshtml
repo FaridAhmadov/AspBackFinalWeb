@@ -1,0 +1,35 @@
+﻿@model List<ASPFINALPROJECT.Models.NoticeBoard>
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="notice-right-wrapper mb-25 pb-25">
+        <h3>TAKE A VIDEO TOUR</h3>
+        @foreach (var item in ViewBag.VideoU)
+        {
+            <div class="notice-video" style="background-image: url('Public/img/@item.Image')">
+                <div class="video-icon video-hover">
+                    <a class="video-popup" href="@item.VideoUrl">
+                        <i class="zmdi zmdi-play"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="notice-left-wrapper">
+        <h3>notice board</h3>
+        <div class="notice-left">
+            @foreach (var item in Model)
+            {
+                <div class="single-notice-left mb-23 pb-20">
+                    <h4>@item.CreatedDate.ToString("dd, MMMM yyyy")</h4>
+                    <p>@item.ContentText </p>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+<!-- Banner Area Start -->
+@foreach (var item in ViewBag.Event)
+{
+<div class="banner-area-wrapper" style="background-image: url('Public/img/@item.Image')">
+
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>@item.PageTitle</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}
+<!-- Banner Area End -->
+<!-- Blog Start -->
+<div class="blog-area event-area three text-center pt-150 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    @foreach (var item in Model.upcomingEvents)
+                    {
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="single-event mb-60">
+                                <div class="event-img">
+                                    <a href="@Url.Action("Details","Event", new { id = @item.Id })">
+                                        <img src="~/Public/img/@item.Image" alt="event">
+                                        <div class="course-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                    <div class="event-date">
+                                        <h3>@item.Date.ToString("dd, mmmm")</h3>
+                                    </div>
+                                </div>
+                                <div class="event-content text-left">
+                                    <h4><a href="@Url.Action("Details","Event", new { id = @item.Id })">@item.Title</a></h4>
+                                    <ul>
+                                        <li><span>time:</span> @item.startTime - @item.EndTime</li>
+                                        <li><span>venue</span> @item.Location</li>
+                                    </ul>
+                                    <div class="event-content-right">
+                                        <a class="default-btn" href="@Url.Action("Details","Event", new { id = @item.Id })">join now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right text-left">
+                    
+                    @{ Html.RenderPartial("~/Views/Shared/SidebarPartial.cshtml");}
+                    <div class="single-blog-widget mb-50">
+                        <h3>latest post</h3>
+                        @foreach (var item in Model.upcomingEvents.Take(3))
+                        {
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="@Url.Action("Details","Event", new { Id = @item.Id })">
+                                        <img src="~/Public/img/@item.Image" alt="post" style="width:100px">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="@Url.Action("Details","Event", new { Id = @item.Id })">@item.Title</a></h4>
+                                    <p>By @item.publishers.Fullname  /  @item.Date.ToString("mmmm dd, 2020")</p>
+                                </div>
+                            </div>}
+                    </div>
+                    <div class="single-blog-widget">
+                        <h3>tags</h3>
+                        <div class="single-tag">
+                            <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                            <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                            <a href="blog-details.html" class="mb-10">teachers</a>
+                            <a href="blog-details.html" class="mr-10">learning</a>
+                            <a href="blog-details.html" class="mr-10">university</a>
+                            <a href="blog-details.html">events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog End -->

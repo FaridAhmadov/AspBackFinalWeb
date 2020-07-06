@@ -1,0 +1,72 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+@{
+    ViewBag.Title = "CoursesDash";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Courses - Dash</h2>
+
+
+
+
+<a href="@Url.Action("CoursesCreate","CoursesP")" class="btn btn-info">Create Content</a>
+<br />
+<br />
+<table class="table mt-3" style="font-size:13px">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Starts</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Class Duration</th>
+            <th scope="col">Skill Level</th>
+            <th scope="col">Language</th>
+            <th scope="col">Students</th>
+            <th scope="col">Assesments</th>
+            <th scope="col">Fee</th>
+            <th scope="col">Image</th>
+            <th scope="col">Settings</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 0; }
+        @foreach (var item in Model.courses)
+        {
+            i++;
+
+        <tr style="font-size:13px">
+            <th scope="row">@i</th>
+            <td>@item.Title</td>
+            <td>@(item.Content.Length>300? Html.Raw(item.Content.Substring(0,300)+ "...") : Html.Raw(item.Content))</td>
+            <td>@item.Starts</td>
+            <td>@item.Duration</td>
+            <td>@item.ClassDuration</td>
+            <td>@item.SkillLevel</td>
+            <td>@item.Language</td>
+            <td>@item.Students</td>
+            <td>@item.Assesments</td>
+            <td>@item.Fee</td>
+            <td>
+                <img src="~/Public/img/@item.Image" style="width:100px" />
+            </td>
+            <td>
+
+                <a href="@Url.Action("CoursesUpdate","CoursesP", new {id=item.Id })">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <a href="@Url.Action("CoursesDelete","CoursesP", new {id=item.Id })">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+
+        </tr>
+
+
+        }
+    </tbody>
+</table>

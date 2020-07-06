@@ -1,0 +1,93 @@
+﻿@model ASPFINALPROJECT.Models.UpcomingEventss
+
+@{
+    ViewBag.Title = "EventUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Events - Update</h2>
+
+
+
+@using ASPFINALPROJECT.Models;
+@{
+    int pubID = Convert.ToInt32(Session["LoggedId"]);
+
+}
+
+<form class="user" method="post" enctype="multipart/form-data" autocomplete="off">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <img src="~/Public/img/@Model.Image" width="100" />
+            @Html.LabelFor(l => l.Image)
+            @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control form-control-user", @type = "file", name = "Image" })
+            @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Title)
+            @Html.TextBoxFor(l => l.Title, null, new { @class = "form-control form-control-user", name = "Title" })
+            @Html.ValidationMessageFor(l => l.Title, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.ContentText)
+            @Html.TextAreaFor(l => l.ContentText, new { @class = "form-control", @id = "CKEdit" })
+            @Html.ValidationMessageFor(l => l.ContentText, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.StartsDtp)
+            @Html.TextBoxFor(l => l.StartsDtp, null, new { @class = "form-control form-control-user dtp", name = "Starts" })
+            @Html.ValidationMessageFor(l => l.StartsDtp, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.startTime)
+            @Html.TextBoxFor(l => l.startTime, null, new { @class = "form-control form-control-user", name = "Assesments" })
+            @Html.ValidationMessageFor(l => l.startTime, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.EndTime)
+            @Html.TextBoxFor(l => l.EndTime, null, new { @class = "form-control form-control-user", name = "Assesments" })
+            @Html.ValidationMessageFor(l => l.EndTime, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Location)
+            @Html.TextBoxFor(l => l.Location, null, new { @class = "form-control form-control-user", name = "Assesments" })
+            @Html.ValidationMessageFor(l => l.Location, null, new { @class = "text-danger" })
+        </div>
+
+
+    </div>
+
+    @*<label>Select Speakers</label>
+        <select class="selectpicker" multiple data-live-search="true" name="SelectedSpeakers">
+
+            @foreach (var item in ViewBag.Speakers)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+
+        </select>*@
+
+    <input type="hidden" name="SelectedSpeakers" value="@Model.SelectedSpeakers" />
+
+    <input type="hidden" name="Image" value="@Model.Image" />
+
+    <input type="hidden" name="publishersID" value="@pubID" />
+
+    <button class="btn btn-primary btn-user btn-block">Create</button>
+    <hr>
+
+    @section CKeditor{
+        <script src="~/Areas/Admin/Public/ckeditor/ckeditor.js"></script>
+    }
+
+</form>
+
+
+
+
+

@@ -1,0 +1,18 @@
+﻿@model ASPFINALPROJECT.VWmodels.ViewModels
+
+@foreach (var item in Model.upcomingEvents.Take(3))
+{
+    <div class="single-post mb-30">
+        <div class="single-post-img">
+            <a href="@Url.Action("Details","Event", new { Id = @item.Id })">
+                <img src="~/Public/img/@item.Image" alt="post" style="width:100px">
+                <div class="blog-hover">
+                    <i class="fa fa-link"></i>
+                </div>
+            </a>
+        </div>
+        <div class="single-post-content">
+            <h4><a href="@Url.Action("Details","Event", new { Id = @item.Id })">@item.Title</a></h4>
+            <p>By @item.publishers.Fullname  /  @item.Date.ToString("mmmm dd, 2020")</p>
+        </div>
+    </div>}

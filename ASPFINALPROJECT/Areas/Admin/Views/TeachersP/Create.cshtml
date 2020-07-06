@@ -1,0 +1,123 @@
+﻿@model ASPFINALPROJECT.Models.MeetOurTeachers
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Teachers - Create</h2>
+
+
+
+<form class="user" method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Image)
+            @Html.TextBoxFor(l => l.ImageUpload, null, new { @class = "form-control form-control-user", @type = "file", name = "Fullname", @placeholder = "Title..." })
+            @Html.ValidationMessageFor(l => l.ImageUpload, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Title)
+            @Html.TextBoxFor(l => l.Title, null, new { @class = "form-control form-control-user", name = "Title", @placeholder = "Title..." })
+            @Html.ValidationMessageFor(l => l.Title, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Status)
+            @Html.TextBoxFor(l => l.Status, null, new { @class = "form-control form-control-user", name = "Status", @placeholder = "Status..." })
+            @Html.ValidationMessageFor(l => l.Status, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Content)
+            @Html.TextBoxFor(l => l.Content, null, new { @class = "form-control form-control-user", name = "Status", @placeholder = "Status..." })
+            @Html.ValidationMessageFor(l => l.Content, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Degree)
+            @Html.TextBoxFor(l => l.Degree, null, new { @class = "form-control form-control-user", name = "Degree", @placeholder = "Degree..." })
+            @Html.ValidationMessageFor(l => l.Degree, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Experience)
+            @Html.TextBoxFor(l => l.Experience, null, new { @class = "form-control form-control-user", name = "Experience", @placeholder = "Experience..." })
+            @Html.ValidationMessageFor(l => l.Experience, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Hobbies)
+            @Html.TextBoxFor(l => l.Hobbies, null, new { @class = "form-control form-control-user", name = "Hobbies", @placeholder = "Hobbies..." })
+            @Html.ValidationMessageFor(l => l.Hobbies, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Faculty)
+            @Html.TextBoxFor(l => l.Faculty, null, new { @class = "form-control form-control-user", name = "Faculty", @placeholder = "Faculty..." })
+            @Html.ValidationMessageFor(l => l.Faculty, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Mail)
+            @Html.TextBoxFor(l => l.Mail, null, new { @class = "form-control form-control-user", name = "Mail", @placeholder = "Mail..." })
+            @Html.ValidationMessageFor(l => l.Mail, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Number)
+            @Html.TextBoxFor(l => l.Number, null, new { @class = "form-control form-control-user", name = "Number", @placeholder = "Number..." })
+            @Html.ValidationMessageFor(l => l.Number, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Skype)
+            @Html.TextBoxFor(l => l.Skype, null, new { @class = "form-control form-control-user", name = "Skype", @placeholder = "Skype..." })
+            @Html.ValidationMessageFor(l => l.Skype, null, new { @class = "text-danger" })
+        </div>
+
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Language)
+            @Html.TextBoxFor(l => l.Language, null, new { @class = "form-control form-control-user", name = "Language", @placeholder = "Language..." })
+            @Html.ValidationMessageFor(l => l.Language, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.TeamLeader)
+            @Html.TextBoxFor(l => l.TeamLeader, null, new { @class = "form-control form-control-user", name = "TeamLeader", @placeholder = "TeamLeader..." })
+            @Html.ValidationMessageFor(l => l.TeamLeader, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Design)
+            @Html.TextBoxFor(l => l.Design, null, new { @class = "form-control form-control-user", name = "Design", @placeholder = "Design..." })
+            @Html.ValidationMessageFor(l => l.Design, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Innovation)
+            @Html.TextBoxFor(l => l.Innovation, null, new { @class = "form-control form-control-user", name = "Innovation", @placeholder = "Innovation..." })
+            @Html.ValidationMessageFor(l => l.Innovation, null, new { @class = "text-danger" })
+        </div>
+
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Development)
+            @Html.TextBoxFor(l => l.Development, null, new { @class = "form-control form-control-user", name = "Development", @placeholder = "Development..." })
+            @Html.ValidationMessageFor(l => l.Development, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-12 mb-3 mb-sm-0">
+            @Html.LabelFor(l => l.Communication)
+            @Html.TextBoxFor(l => l.Communication, null, new { @class = "form-control form-control-user", name = "Communication", @placeholder = "Communication..." })
+            @Html.ValidationMessageFor(l => l.Communication, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <button class="btn btn-primary btn-user btn-block">Submit</button>
+    <hr>
+
+
+</form>
+
+
